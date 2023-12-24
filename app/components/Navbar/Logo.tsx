@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-export default function Logo() {
+const Logo = () => {
   const router = useRouter();
   return (
     <Image
@@ -15,4 +15,6 @@ export default function Logo() {
       src="/images/logo.png"
     />
   );
-}
+};
+
+export default Logo;
