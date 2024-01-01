@@ -9,6 +9,7 @@ import useRegisterModal from "../hooks/useRegisterModal";
 import Modal from "./Modal";
 import Heading from "../heading";
 import Input from "../inputs/Input";
+import { toast } from "@/node_modules/react-hot-toast/dist/index";
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
@@ -28,7 +29,7 @@ const RegisterModal = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
-
+    // TODO: fix the bug so error actially sends a hot toast
     axios
       .post("/api/register", data)
       .then(() => {
@@ -36,6 +37,7 @@ const RegisterModal = () => {
       })
       .catch((error) => {
         console.log(error);
+        toast.error("Something went wrong");
       })
       .finally(() => {
         setIsLoading(false);
